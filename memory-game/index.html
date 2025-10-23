@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <!-- Tailwind v4 (or via build if using Vite) -->
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen">
+    <!-- Header -->
+    <header class="text-center mb-8">
+      <h1 class="text-4xl font-bold mb-2">Memory ???? GAME ????</h1>
+      <p class="text-gray-400">Play Game pls pls pls pls</p>
+    </header>
+
+    <!-- Button section -->
+    <main class="flex flex-col gap-4 w-full max-w-xs">
+      <button
+        id="gameBtn"
+        class="bg-blue-600 hover:bg-blue-700 transition text-lg py-3 rounded-lg font-semibold shadow-lg"
+      >
+        🎮 Start
+      </button>
+
+      <button
+        id="statsBtn"
+        class="bg-green-600 hover:bg-green-700 transition text-lg py-3 rounded-lg font-semibold shadow-lg"
+      >
+        📊 View Your Stats
+      </button>
+
+      <button
+        id="uploadBtn"
+        class="bg-purple-600 hover:bg-purple-700 transition text-lg py-3 rounded-lg font-semibold shadow-lg"
+      >
+        📤 Upload Custom Images
+      </button>
+    </main>
+
+    <!-- Optional footer -->
+    <footer class="absolute bottom-4 text-gray-500 text-sm">
+      © 2025 Memory Game by Mike
+    </footer>
+
+    <!-- Script -->
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
