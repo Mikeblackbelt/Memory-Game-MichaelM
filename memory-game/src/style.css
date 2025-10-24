@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+#game {
+    margin: auto;
+    min-width: 40%;
+    min-height: 40%;
+    transform: translateY(20%);
+    background-color: grey;
+    z-index: 67;
+}

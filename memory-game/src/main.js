@@ -1,13 +1,23 @@
 import './style.css';
 
-const playButton = document.getElementById('gameBtn');
-const uploadButton = document.getElementById('uploadBtn');
-const statsButton = document.getElementById('statsBtn');
+document.addEventListener('DOMContentLoaded', () => {
+  const gameBtn = document.getElementById('gameBtn');
+  if (gameBtn) {
+    gameBtn.addEventListener('click', startGame);
+  }
 
-playButton.addEventListener('click', (event) => {
-  window.location.href = 'upload.html';
-})
+  const statsBtn = document.getElementById('statsBtn');
+  if (statsBtn) {
+    statsBtn.addEventListener('click', showStats);
+  }
 
+  const uploadBtn = document.getElementById('uploadBtn');
+  if (uploadBtn) {
+    uploadBtn.addEventListener('click', uploadImages);
+  }
+  let userUploads = localStorage.getItem('Images');
+  let stats = localStorage.getItem('Path');
+});
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
