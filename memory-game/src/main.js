@@ -25,3 +25,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
   let stats = localStorage.getItem('Path')
 });
 
+function startGame() {
+  window.location.href = '\\memory.html';
+}
+
+function showStats() {
+  return
+}
+
+function uploadImages() {
+  return
+}

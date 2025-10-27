@@ -4,26 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game</title>
-    <!-- Tailwind v4 (or via build if using Vite) -->
-    <link rel="stylesheet" href="./src/style.css" />
-    <script src="./src/counter.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen">
+
+  <body class="bg-gray-900 text-white flex flex-col min-h-screen">
+
     <!-- Header -->
-    <header class="text-center mb-8">
-      <h1 class="text-4xl font-bold mb-2">Memory ???? GAME ????</h1>
-      <p class="text-gray-400">Play Game pls pls pls pls</p>
+    <header class="w-full bg-gray-800 text-center py-6 shadow-md">
+      <h1 class="text-3xl font-bold mb-1">Memory Game 🤔</h1>
+      <p class="text-gray-400 text-sm">i dont want to make this</p>
     </header>
 
-    <div id="game"></div>
+    <!-- Main -->
+    <main class="flex-1 flex items-center justify-center">
+      <div 
+        id="game" 
+        class="bg-gray-400 w-[60px] h-[60px] rounded-lg shadow-lg transition-all"
+      ></div>
+    </main>
+
     <div id="opts"></div>
 
-    <!-- Optional footer -->
-    <footer class="absolute bottom-4 text-gray-500 text-sm">
+    <!-- Footer -->
+    <footer class="w-full bg-gray-800 text-gray-500 text-sm text-center py-4">
       © 2025 Memory Game by Mike
     </footer>
 
-    <!-- Script -->
-    <script type="module" src="./src/main.js"></script>
+    <!-- JS -->
+    <script type="module" src="./src/counter.js"></script>
   </body>
 </html>
