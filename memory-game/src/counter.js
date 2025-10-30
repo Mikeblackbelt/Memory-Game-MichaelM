@@ -1,6 +1,72 @@
 // counter.js
 import './style.css';
 
+const scrtxt = document.getElementById('current-score');
+const toptxt = document.getElementById('top-score');
+
+const scores = JSON.parse(localStorage['scores']);
+scores.forEach(element => {
+  if (element > toptxt.textContent) {toptxt.textContent = element}
+});
+
+function showPopup(message, options = {}) {
+  // Default settings
+  const {
+    background = 'rgba(116, 15, 15, 0.8)',
+    textColor = '#fff',
+    buttonColor = '#6264dbff', // indigo-500
+    zIndex = 9999,
+    autoClose = false,
+    duration = 3000
+  } = options;
+
+  const overlay = document.createElement('div');
+  overlay.style.cssText = `
+    position: fixed;
+    inset: 0;
+    background: ${background};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: ${zIndex};
+  `;
+
+  const popup = document.createElement('div');
+  popup.style.cssText = `
+    background: linear-gradient(to bottom right, #1f2937, #111827);
+    color: ${textColor};
+    padding: 1.5rem 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    text-align: center;
+    max-width: 320px;
+    font-family: sans-serif;
+  `;
+  popup.innerHTML = `
+    <p style="margin-bottom: 1rem; font-size: 1rem; line-height: 1.4;">${message}</p>
+    <button style="
+      background: ${buttonColor};
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    ">OK</button>
+  `;
+
+  overlay.appendChild(popup);
+  document.body.appendChild(overlay);
+
+  const close = () => overlay.remove();
+  popup.querySelector('button').addEventListener('click', function() {window.location.href = '\\index.html'});
+
+  if (autoClose) {
+    setTimeout(close, duration);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   const game = document.getElementById('game');
   const opts = document.getElementById('opts');
@@ -12,7 +78,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   let userSequence = [];
   let score = 0;
 
-  // Generate a new random sequence
   function resetSeq() {
     sequence = [];
     for (let i = 0; i < score + 2; i++) {
@@ -22,7 +87,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     userSequence = [];
   }
 
-  // Flash the sequence visually
   async function shiftGame(seq, time = 800) {
     if (!running) {return}
     for (const color of seq) {
@@ -33,29 +97,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Check user input
   function checkCorrect(color) {
     userSequence.push(color);
     const idx = userSequence.length - 1;
 
-    // Flash clicked color
     game.style.background = color;
     setTimeout(() => (game.style.background = 'grey'), 300);
 
-    // Wrong input
     if (userSequence[idx] !== sequence[idx]) {
       resetGame();
       return;
     }
 
-    // Round complete
     if (userSequence.length === sequence.length) {
       score++;
+      scrtxt.textContent = score;
       nextRound();
     }
   }
 
-  // Create color buttons
   function createOpts() {
     opts.innerHTML = '';
     for (const color of colors) {
@@ -73,17 +133,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // Start a new round
   async function nextRound() {
     await new Promise(resolve => setTimeout(resolve, 1000));
     resetSeq();
     await shiftGame(sequence);
   }
 
-  // Save scores and reset game
   function resetGame() {
     running = false;
     let scores = localStorage.getItem('scores');
+    showPopup(`You lose! Score: ${score}`)
 
     if (scores && scores !== 'null') {
       scores = JSON.parse(scores);
@@ -102,7 +161,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }, 6767);
   }
 
-  // Initialize game
   createOpts();
   await nextRound();
 });

@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game Stats</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-grey-600 min-h-screen flex flex-col items-center  text-gray-800 font-sans p-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Stats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-  <h1 class="text-3xl font-bold mb-6">Game Stats</h1>
+  <body class="min-h-screen flex flex-col items-center justify-center font-sans text-white bg-gradient-to-b from-gray-900 via-gray-900 to-indigo-950 p-8">
 
-  <div id="stats" class="bg-blue-600bg-white shadow-md rounded-xl p-6 w-full max-w-md text-center">
-    <p class="text-lg font-semibold mb-4">Last 10 Scores</p>
+    <h1 class="text-5xl font-extrabold mb-8 text-indigo-300 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] border-1 drop-shadow-md">Game Stats 📊</h1>
 
-    <ul id="score-list" class="divide-y divide-gray-200 text-gray-700 mb-4">
-      <!-- Scores will go here -->
-      <li class="py-2 italic text-gray-400">No scores yet — play a round!</li>
-    </ul>
+    <div id="stats" class="bg-gradient-to-br from-gray-800 via-gray-900 to-indigo-900 shadow-2xl rounded-2xl p-8 w-full max-w-md text-center border border-indigo-700">
 
-    <p id="summary" class="text-sm text-gray-600 mb-6">
-      <!-- Summary stats (best, avg, etc.) -->
-    </p>
+      <div class="space-y-2 text-gray-200 mb-6">
+        <p><span class="font-semibold text-indigo-300">🏆 Best Score:</span> <span id="max">—</span></p>
+        <p><span class="font-semibold text-indigo-300">📈 Average Score:</span> <span id="average">—</span></p>
+      </div>
 
-    <div class="flex justify-center gap-3">
-      <button id="clear"
-        class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-medium rounded-md transition">
-        Clear Stats
-      </button>
-      <button id="back"
-        class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-md transition">
-        Back to Game
-      </button>
+      <p id="summary" class="text-sm text-gray-400 mb-8 italic">
+      </p>
+
+      <div class="flex justify-center gap-4">
+        <button
+          id="clear"
+          class="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-md shadow-md transition-transform transform hover:scale-105 focus:ring-2 focus:ring-red-400 focus:outline-none"
+        >
+          Clear Stats 🧹
+        </button>
+
+        <button
+          id="back"
+          class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-md shadow-md transition-transform transform hover:scale-105 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+        >
+          Back to Game 🎮
+        </button>
+      </div>
     </div>
-  </div>
 
-</body>
+    <script type="module" src="./src/main.js" defer></script>
+  </body>
 </html>
